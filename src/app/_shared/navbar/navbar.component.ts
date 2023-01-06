@@ -9,7 +9,10 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  token?: string;
+
   ngOnInit(): void {
+    this.token='aa';
   }
 
 }
