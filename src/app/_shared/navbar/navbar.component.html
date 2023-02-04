@@ -3,7 +3,8 @@
         <a class="nav-link" [routerLink]="''"><mat-icon class="inline-icon">home</mat-icon>HouseKeeper</a>
         <span class="spacer"></span>
         <button mat-button *ngIf="token" [routerLink]="'tasks'"><mat-icon class="inline-icon">list</mat-icon>Tasks</button>
-        <button mat-button [routerLink]="'login'"><mat-icon class="inline-icon">lock_open</mat-icon>Login</button>
-        <button mat-button [routerLink]="'register'"><mat-icon class="inline-icon">person_add</mat-icon>Register</button>
+        <button mat-button *ngIf="!token" [routerLink]="'login'"><mat-icon class="inline-icon">lock_open</mat-icon>Login</button>
+        <button mat-button *ngIf="!token" [routerLink]="'register'"><mat-icon class="inline-icon">person_add</mat-icon>Register</button>
+        <button mat-button *ngIf="!!household" (click)="openAdd()"><mat-icon class="inline-icon">add</mat-icon>Add</button>
     </mat-toolbar>
 </p>

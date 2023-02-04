@@ -6,6 +6,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import {AccountService} from "../../core/account.service";
 
 export class RegisterData {
   firstname: string;
@@ -40,7 +41,7 @@ export class RegisterComponent implements OnInit {
   success = false;
   errorMessage!: string;
 
-  constructor(private formBuilder: FormBuilder
+  constructor(private formBuilder: FormBuilder, private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +61,6 @@ export class RegisterComponent implements OnInit {
           },
           {validators: this.confPasswordMatchesValidator()}
       ),
-      phonenumber: [null,[Validators.required, Validators.pattern('^\\+\\d{10,13}$')]]
     });
   }
 
@@ -86,14 +86,14 @@ export class RegisterComponent implements OnInit {
         this.phonenumber?.value
     );
 
-    /*this.accountService.register(registerData1).subscribe(
+    this.accountService.register(registerData1).subscribe(
         (response: any) => {
-          if (response.status) { this.success = true; }
+          if (response.token) { this.success = true; }
         },
-        (error) => {
+        (error: any) => {
           window.alert(error);
         }
-    );*/
+    );
   }
 
   get firstname() {

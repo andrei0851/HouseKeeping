@@ -6,14 +6,18 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddHouseDialogComponent } from '../pages/home/add-house-dialog/add-house-dialog.component';
 
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    AddHouseDialogComponent
   ],
   imports: [
     CommonModule,
@@ -23,10 +27,15 @@ import {RouterModule} from "@angular/router";
       MatInputModule,
       MatFormFieldModule,
       ReactiveFormsModule,
+      MatInputModule,
+      MatCardModule,
+      FormsModule,
+      MatDialogModule,
     RouterModule
   ],
   exports:[
       NavbarComponent,
+      AddHouseDialogComponent,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

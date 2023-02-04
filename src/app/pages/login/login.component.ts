@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Router } from '@angular/router';
+import {AccountService} from "../../core/account.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage?: string;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private accountService: AccountService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,12 +33,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       window.alert("Invalid login form.")
     } else {
-      /*this.accountService.login(this.loginForm.value).subscribe((response: any) => {
-        localStorage.setItem('token', response.token);
-        window.location.href = ''
-      }, error => {
+      this.accountService.login(this.loginForm.value).subscribe((response: any) => {
+        localStorage.setItem('token',response.token);
+        localStorage.setItem('household',response.household);
+       this.router.navigate(['/']);
+       window.location.reload();
+      }, (error: string | undefined) => {
         this.errorMessage = error;
-      });*/
+      });
     }
   }
 

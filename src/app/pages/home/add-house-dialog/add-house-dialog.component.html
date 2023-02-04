@@ -1,0 +1,7 @@
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="data.name">
+          </mat-form-field>
+        <button mat-raised-button class="button" [mat-dialog-close]="data.name" color="primary">Add</button>
+    </mat-card-content>
