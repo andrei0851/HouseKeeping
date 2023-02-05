@@ -3,8 +3,10 @@
         {{task.title}}
     </mat-card-title>
   <mat-card-content>{{task.description}}</mat-card-content>
+  <mat-card-content *ngIf="task.member">Task has to be done by: <b>{{task.member.firstName}} {{task.member.lastName}}</b></mat-card-content>
+  <mat-card-content *ngIf="!task.member"><b>This task is not assigned.</b></mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="accent" *ngIf="this.userid == task.member.id && !task.done" (click)="done()">Mark as done</button>
+    <button mat-raised-button color="accent" *ngIf="!task.done && (task.member == null || this.userid == task.member.id)" (click)="done()">Mark as done</button>
     <button mat-raised-button color="primary" *ngIf="!task.done" (click)="addMember()">Assign to member</button>
   </mat-card-actions>
   <mat-card-footer *ngIf="task.done"><p class="bolded" style="color:green">Task Done!</p></mat-card-footer>

@@ -12,12 +12,14 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 import { AssignTaskDialogComponent } from './pages/tasks/assign-task-dialog/assign-task-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { AddtaskComponent } from './pages/tasks/addtask/addtask.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     AssignTaskDialogComponent,
+    AddtaskComponent,
   ],
   imports: [
     BrowserModule,

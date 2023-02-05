@@ -11,6 +11,7 @@ export class TaskServiceService {
   private readonly getMembersURL = '/members?householdId='
   private readonly doneTaskURL = '/tasks/finishTask/'
   private readonly assignTaskURL = '/tasks?memberID='
+  private readonly createTaskURL = '/tasks'
 
   constructor(private http: HttpClient) { }
 
@@ -28,5 +29,9 @@ export class TaskServiceService {
 
   doneTask(taskID: string){
     return this.http.put(environment.API_SERVER + this.doneTaskURL + `${taskID}`,'');
+  }
+
+  addTask(task: any){
+    return this.http.post(environment.API_SERVER + this.createTaskURL,task);
   }
 }

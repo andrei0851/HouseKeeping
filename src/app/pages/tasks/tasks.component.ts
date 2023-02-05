@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskServiceService } from 'src/app/core/task-service.service';
+import { AddtaskComponent } from './addtask/addtask.component';
 import { AssignTaskDialogComponent } from './assign-task-dialog/assign-task-dialog.component';
 
 @Component({
@@ -20,12 +21,20 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasks(this.householdid!).subscribe({
       next: (resp) => {
         this.tasks = resp;
+        console.log(this.tasks);
       } 
     })
   }
 
   addMember(){
     const dialogRef = this.dialog.open(AssignTaskDialogComponent,{data: {isassign:false, householdid: this.householdid}});
+  }
+
+  addTask(){
+    const dialogRef = this.dialog.open(AddtaskComponent,{data: {householdid: this.householdid}});
+    dialogRef.afterClosed().subscribe(result => {
+     window.location.reload();
+    })
   }
 
 }
