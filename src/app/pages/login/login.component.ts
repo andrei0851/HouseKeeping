@@ -34,10 +34,14 @@ export class LoginComponent implements OnInit {
       window.alert("Invalid login form.")
     } else {
       this.accountService.login(this.loginForm.value).subscribe((response: any) => {
+        if(response.member.household != null){
+          localStorage.setItem('household',response.member.household.id);
+        }
         localStorage.setItem('token',response.token);
-        localStorage.setItem('household',response.household);
-       this.router.navigate(['/']);
-       window.location.reload();
+        localStorage.setItem('userID',response.member.id);
+       this.router.navigate(['/']).then(() => {
+        window.location.reload();
+       });
       }, (error: string | undefined) => {
         this.errorMessage = error;
       });

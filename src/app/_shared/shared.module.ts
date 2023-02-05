@@ -11,13 +11,16 @@ import {RouterModule} from "@angular/router";
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddHouseDialogComponent } from '../pages/home/add-house-dialog/add-house-dialog.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import {MatSelectModule} from '@angular/material/select'; 
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    AddHouseDialogComponent
+    AddHouseDialogComponent,
+    TaskCardComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { AddHouseDialogComponent } from '../pages/home/add-house-dialog/add-hous
       MatCardModule,
       FormsModule,
       MatDialogModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule
   ],
   exports:[
       NavbarComponent,
@@ -42,7 +46,9 @@ import { AddHouseDialogComponent } from '../pages/home/add-house-dialog/add-hous
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    TaskCardComponent,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

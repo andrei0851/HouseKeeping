@@ -3,5 +3,5 @@
             <mat-label>Name</mat-label>
             <input matInput [(ngModel)]="data.name">
           </mat-form-field>
-        <button mat-raised-button class="button" [mat-dialog-close]="data.name" color="primary">Add</button>
+        <button mat-raised-button class="button" (click)= "addHouseHold()"color="primary">Add</button>
     </mat-card-content>

@@ -1,0 +1,12 @@
+<mat-card class="card">
+    <mat-card-title>
+        {{task.title}}
+    </mat-card-title>
+  <mat-card-content>{{task.description}}</mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent" *ngIf="this.userid == task.member.id && !task.done" (click)="done()">Mark as done</button>
+    <button mat-raised-button color="primary" *ngIf="!task.done" (click)="addMember()">Assign to member</button>
+  </mat-card-actions>
+  <mat-card-footer *ngIf="task.done"><p class="bolded" style="color:green">Task Done!</p></mat-card-footer>
+  <mat-card-footer *ngIf="!task.done"><p class="bolded" style="color:orangered">Task InProgress!</p></mat-card-footer>
+</mat-card>
