@@ -22,6 +22,9 @@ export class TaskCardComponent implements OnInit {
 
   addMember(){
     const dialogRef = this.dialog.open(AssignTaskDialogComponent,{data: {task: this.task, isassign:true}});
+    dialogRef.afterClosed().subscribe(() => {
+      window.location.reload();
+    })
   }
 
   done(){

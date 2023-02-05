@@ -10,7 +10,7 @@ export class TaskServiceService {
   private readonly getTaskURL = '/tasks?householdId='
   private readonly getMembersURL = '/members?householdId='
   private readonly doneTaskURL = '/tasks/finishTask/'
-  private readonly assignTaskURL = '/tasks?memberID='
+  private readonly assignTaskURL = '/tasks?memberId='
   private readonly createTaskURL = '/tasks'
 
   constructor(private http: HttpClient) { }

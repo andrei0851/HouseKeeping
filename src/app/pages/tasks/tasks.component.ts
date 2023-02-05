@@ -26,8 +26,11 @@ export class TasksComponent implements OnInit {
     })
   }
 
-  addMember(){
+  assignMember(){
     const dialogRef = this.dialog.open(AssignTaskDialogComponent,{data: {isassign:false, householdid: this.householdid}});
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
+    })
   }
 
   addTask(){

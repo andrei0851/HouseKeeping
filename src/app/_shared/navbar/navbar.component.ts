@@ -26,6 +26,9 @@ export class NavbarComponent implements OnInit {
 
   openAdd(){
     const dialogRef = this.dialog.open(AddHouseDialogComponent,{data: {name: this.houseName, userID: this.userID}, disableClose: true});
+    dialogRef.afterClosed().subscribe(() => {
+      window.location.reload();
+    })
   }
 
   logout(){

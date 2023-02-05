@@ -3,22 +3,38 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpHeaders, HttpResponse, HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {catchError, Observable, tap} from 'rxjs';
 
-@Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor() {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    var token = localStorage.getItem('token');
-    if(token){
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+    return next.handle(this.setHeaders(request)).pipe(
+        tap(
+            (event: HttpEvent<any>) =>
+            (error: any) =>{
+              return;
+            }
+        )
+    );
+  }
+
+
+  setHeaders(request: HttpRequest<any>) {
+    let newHeaders = request.headers
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Cache-Control', 'no-cache')
+        .set('Pragma', 'no-cache')
+
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      newHeaders = newHeaders
+          .set('Content-Type', 'application/json')
+          .set('Authorization', 'Bearer ' + token);
     }
-    return next.handle(request);
+
+    return request.clone({headers: newHeaders});
   }
 }
