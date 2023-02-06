@@ -5,6 +5,11 @@
   <mat-card-content>{{task.description}}</mat-card-content>
   <mat-card-content *ngIf="task.member">Task has to be done by: <b>{{task.member.firstName}} {{task.member.lastName}}</b></mat-card-content>
   <mat-card-content *ngIf="!task.member"><b>This task is not assigned.</b></mat-card-content>
+    <mat-card-content [ngSwitch]="task.priority">
+        <p style="color:red;" *ngSwitchCase="'HIGH'"><b>This task priority is: {{task.priority}}</b></p>
+        <p style="color:orange;" *ngSwitchCase="'MEDIUM'"><b>This task priority is: {{task.priority}}</b></p>
+        <p style="color:lightblue;" *ngSwitchCase="'LOW'"><b>This task priority is: {{task.priority}}</b></p>
+    </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="accent" *ngIf="!task.done && (task.member != null && this.userid == task.member.id)" (click)="done()">Mark as done</button>
     <button mat-raised-button color="primary" *ngIf="!task.done" (click)="addMember()">Assign to member</button>

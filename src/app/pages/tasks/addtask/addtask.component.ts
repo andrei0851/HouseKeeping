@@ -11,6 +11,8 @@ export class AddtaskComponent implements OnInit {
 
   taskTitle: string = '';
   taskDescription: string = '';
+  priority = ['LOW','MEDIUM','HIGH'];
+  selectedPriority: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<AddtaskComponent>,
@@ -22,7 +24,7 @@ export class AddtaskComponent implements OnInit {
   }
 
   addTask(){
-    var task = {title: this.taskTitle, description: this.taskDescription, household: {id: this.data.householdid}};
+    var task = {title: this.taskTitle, description: this.taskDescription, household: {id: this.data.householdid}, priority: this.selectedPriority};
     this.taskService.addTask(task).subscribe({
       next: (resp: any) => {
         window.alert("Task added!");

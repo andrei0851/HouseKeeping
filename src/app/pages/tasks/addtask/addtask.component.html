@@ -11,6 +11,16 @@
         <textarea rows="5" [(ngModel)]="this.taskDescription" matInput></textarea>
       </mat-form-field>
 </div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select [(ngModel)]="selectedPriority">
+            <mat-option *ngFor="let p of priority" [value]="p">
+                {{p}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
 
 <button mat-raised-button color="primary" (click)="addTask()">Add Task</button>
   
