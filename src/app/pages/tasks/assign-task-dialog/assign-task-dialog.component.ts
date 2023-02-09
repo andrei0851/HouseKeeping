@@ -44,7 +44,7 @@ export class AssignTaskDialogComponent implements OnInit {
   assign(){
     this.taskService.assignTask(this.data.task.id,this.selectedMember!).subscribe({
       next: (resp: any) => {
-        window.alert('Task assigned!');
+        window.alert('Task assigned.');
         this.dialogRef.close();
       }
     })
