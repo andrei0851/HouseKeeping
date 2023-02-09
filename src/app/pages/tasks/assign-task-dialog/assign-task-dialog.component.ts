@@ -35,7 +35,7 @@ export class AssignTaskDialogComponent implements OnInit {
       this.houseHoldService.getAllMembers().subscribe({
         next: (resp: any) => {
           this.members = resp;
-          this.members = this.members.filter((f: any) =>  f.household === null);
+          this.members = this.members.filter((f: any) =>  f.household === null && f.userID != this.userID);
         }
       })
     }
@@ -53,7 +53,7 @@ export class AssignTaskDialogComponent implements OnInit {
   addMember(){
     this.houseHoldService.assignHousehold(this.selectedMember!,this.data.householdid).subscribe({
       next: (resp: any) => {
-        window.alert('Member successfully added to household.');
+        window.alert('Member successfully added to household!');
         this.dialogRef.close();
       }
     })
