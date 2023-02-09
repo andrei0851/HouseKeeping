@@ -1,5 +1,5 @@
 <mat-form-field appearance="fill">
-  <mat-label>Member</mat-label>
+  <mat-label>Member: </mat-label>
   <mat-select [(ngModel)]="selectedMember">
     <mat-option *ngFor="let member of members" [value]="member.id">
       {{member.firstName}} {{member.lastName}}
